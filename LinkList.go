@@ -41,12 +41,34 @@ func (head *Node) String() string{
 
 	ret = "head"
 	cur := head.next
+
 	for {
-		if cur == nil{
+		if cur == nil {
 			break
 		}
 		ret = ret + "->" + strconv.Itoa(cur.value)
 		cur = cur.next
+	}
+	return ret
+}
+
+func (head *Node) Check() string{
+	var ret string
+
+	ret = "head"
+	cur := head.next
+	check := head.next.next
+
+	for {
+		if cur == nil || check == cur {
+			break
+		}
+		ret = ret + "->" + strconv.Itoa(cur.value)
+		cur = cur.next
+
+		if check.next != nil {
+			check = check.next.next
+		}
 	}
 	return ret
 }
@@ -82,9 +104,9 @@ func main()  {
 	a := Node{nil, 1, nil}
 	b := Node{nil, 2, nil}
 	c := Node{nil, 3, nil}
-	//d := Node{nil, 3, nil}
-	e := Node{nil, 2, nil}
-	f := Node{nil, 1, nil}
+	d := Node{nil, 4, nil}
+	e := Node{nil, 5, nil}
+	f := Node{nil, 6, nil}
 
 
 	head.Append(&l)
@@ -94,56 +116,11 @@ func main()  {
 	head2.Append(&a)
 	a.Append(&b)
 	b.Append(&c)
-	//c.Append(&d)
-	c.Append(&e)
+	c.Append(&d)
+	d.Append(&e)
 	e.Append(&f)
+	//f.Append(&d)
 	fmt.Println(head2.String())
-
-	p1 := head2.next
-	p2 := head2.next.next
-
-	var p Node
-	for {
-
-		if p2 == nil { // odd
-			fmt.Println("odd", p1.value)
-			p.next = p1
-			break
-		}
-
-		if p2.next == nil { // even
-			fmt.Println("even", p1.value)
-			p.next = p1.next
-			break
-		}
-		p1 = p1.next
-		p2 = p2.next.next
-	}
-	fmt.Println(p.String())
-	fmt.Println(head2.String())
-	p.Reverse()
-
-	fmt.Println(p.String())
-	fmt.Println(head2.String())
-
-	tmp1 := head2.next
-	tmp2 := p.next
-
-	for {
-		if tmp1.value != tmp2.value {
-			fmt.Println("不是回文", tmp1.value, tmp2.value)
-			break
-		}
-
-		if tmp1.next == nil || tmp2.next == nil {
-			p.Reverse()
-			fmt.Println("是回文", head2.String())
-			break
-		}
-
-		tmp1 = tmp1.next
-		tmp2 = tmp2.next
-	}
 }
 
 func (head *Node) isPalindromic() {
