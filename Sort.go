@@ -34,18 +34,19 @@ func main() {
 	InsertSort(&unSort)
 	fmt.Println(unSort)
 
-	unSort = rand.Perm(20)
+	unSort = rand.Perm(10)
 	fmt.Println(unSort)
 	sort := MergeSort(&unSort)
-	fmt.Println(sort)
+	fmt.Println("MergeSort:", sort)
 
-	unSort = rand.Perm(20)
+	unSort = rand.Perm(10)
 	sort = URMergeSort(&unSort)
-	fmt.Println(sort)
+	fmt.Println("URMergeSort:", sort)
 
-	unSort = rand.Perm(15)
+	unSort = rand.Perm(50)
 	fmt.Println(unSort)
 	QuickSort(&unSort)
+	fmt.Println("QuickSort:", unSort)
 }
 
 func SelectSort(u *[]int) {
@@ -220,13 +221,28 @@ func URMergeSort(u *[]int) []int {
 
 func QuickSort(u *[]int) {
 	s := *u
-	l := len(s)
+	quickSort(&s, 0, len(s)-1)
+}
 
-	mid := s[0]
+func quickSort(u *[]int, s, e int) {
+	if s>=e {
+		return
+	}
+	mid := q(u, s, e)
+	un := *u
 
-	i := 1
-	j := l-1
+	un[s], un[mid] = un[mid], un[s]
+	quickSort(&un, s, mid-1)
+	quickSort(&un, mid+1, e)
+}
+
+func q(u *[]int, i, j int) int {
+	s := *u
+	mid := s[i]
+	l := j - i + 1
 	p := 0
+
+	i = i + 1
 
 	for {
 		for s[i] < mid {
@@ -251,11 +267,5 @@ func QuickSort(u *[]int) {
 		s[i], s[j] = s[j], s[i]
 	}
 
-	fmt.Println(p)
+	return p
 }
-
-func quickSort(u *[]int, s, e int) {
-
-}
-
-func q() {}
