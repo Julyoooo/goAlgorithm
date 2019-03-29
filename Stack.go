@@ -59,7 +59,9 @@ func main() {
 		case int:
 			fmt.Printf("int type:%v\n", v)
 		case string:
-			fmt.Printf("string type:%v", v)
+			fmt.Printf("string type:%v\n", v)
+		case Stack:
+			fmt.Printf("%v", v)
 		}
 
 		if ok {
