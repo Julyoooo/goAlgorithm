@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("a")
 	fmt.Println(myPow(1.732, 2))
-	fmt.Println(mySqrt(3))
+	fmt.Println(mySqrt(9))
 }
 
 func myPow(x float32, n float32) float32 {
@@ -38,12 +38,12 @@ func mySqrt(x float32) float32 {
 	cur := myPow(next, 2)
 
 	for {
-		if cur > x {
-			next = next - (x - next)/2
-		}
-
 		if int(cur * 100) == int(x * 100) {
 			return next
+		}
+
+		if cur > x {
+			next = next - (x - next)/2
 		}
 
 		if cur < x {
@@ -53,11 +53,11 @@ func mySqrt(x float32) float32 {
 		cur = myPow(next, 2)
 		fmt.Println("cur:", int(cur * 1000))
 
-		if count > 1000 {
+		count++
+
+		if count > 1000000 {
 			break
 		}
-
-		count++
 	}
 
 	return next
