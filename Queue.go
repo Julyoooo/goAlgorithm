@@ -72,33 +72,44 @@ func (q *QueueByArray) Enqueue(value interface{}) {
 	}
 	q.Values[q.Tail] = value
 	q.Tail += 1
+	q.Size += 1
+}
+
+func (q *QueueByArray) Dequeue() interface{}{
+	if q.Size == 0 {
+		return nil
+	}
+	ret := q.Values[q.Head]
+	q.Head += 1
+	q.Size -= 1
+	return ret
 }
 
 // todo: 数组队列搬移
 
-func main() {
-	q := Queue{}
-
-	q.Init()
-
-	q.Enqueue(node{1, nil})
-
-	q.Enqueue(node{2, nil})
-
-	q.Enqueue(node{3, nil})
-
-	fmt.Println(q.Dequeue())
-	fmt.Println(q.Dequeue())
-	fmt.Println(q.Dequeue())
-	fmt.Println(q.Dequeue() == nil)
-
-	fmt.Println("Queue:↑")
-
-	fmt.Println("QueueByArray:")
-	qa := QueueByArray{}
-
-	qa.Init(2)
-	qa.Enqueue(1)
-	qa.Enqueue(2)
-	fmt.Println(qa.Values, qa.Head, qa.Tail)
-}
+//func main() {
+//	q := Queue{}
+//
+//	q.Init()
+//
+//	q.Enqueue(node{1, nil})
+//
+//	q.Enqueue(node{2, nil})
+//
+//	q.Enqueue(node{3, nil})
+//
+//	fmt.Println(q.Dequeue())
+//	fmt.Println(q.Dequeue())
+//	fmt.Println(q.Dequeue())
+//	fmt.Println(q.Dequeue() == nil)
+//
+//	fmt.Println("Queue:↑")
+//
+//	fmt.Println("QueueByArray:")
+//	qa := QueueByArray{}
+//
+//	qa.Init(2)
+//	qa.Enqueue(1)
+//	qa.Enqueue(2)
+//	fmt.Println(qa.Values, qa.Head, qa.Tail)
+//}
