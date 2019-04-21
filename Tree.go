@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type TreeNode struct {
 	value interface{}
@@ -92,4 +94,14 @@ func main() {
 	BFS(&root)
 	fmt.Println("-------深度优先（栈实现）--------")
 	DFS(&root)
+
+	m := map[string]int{}
+	m["a"] = 10
+	m["b"] = 21
+
+	for k,v := range m {
+		fmt.Println(k)
+		fmt.Println(v)
+	}
+	fmt.Println(m["a"])
 }

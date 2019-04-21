@@ -2,52 +2,51 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 )
 
-func main() {
-
-	src := []int{0,1,2,3,4,5,6,7,8,9}
-	dest := make([]int, 10)
-	perm := rand.Perm(10)
-	for i, v := range perm {
-		dest[v] = src[i]
-	}
-
-	fmt.Println(perm)
-	perm = rand.Perm(10)
-	fmt.Println(perm)
-	fmt.Println(dest)
-
-	unSort := []int{4, 5, 6, 3, 2, 1}
-
-	SelectSort(&unSort)
-	fmt.Println(unSort)
-
-	unSort = []int{3, 5, 4, 1, 2, 6}
-
-	BubbleSort(&unSort)
-	fmt.Println(unSort)
-
-	unSort = []int{3, 5, 4, 1, 2, 6}
-
-	InsertSort(&unSort)
-	fmt.Println(unSort)
-
-	unSort = rand.Perm(10)
-	fmt.Println(unSort)
-	sort := MergeSort(&unSort)
-	fmt.Println("MergeSort:", sort)
-
-	unSort = rand.Perm(10)
-	sort = URMergeSort(&unSort)
-	fmt.Println("URMergeSort:", sort)
-
-	unSort = rand.Perm(50)
-	fmt.Println(unSort)
-	QuickSort(&unSort)
-	fmt.Println("QuickSort:", unSort)
-}
+//func main() {
+//
+//	src := []int{0,1,2,3,4,5,6,7,8,9}
+//	dest := make([]int, 10)
+//	perm := rand.Perm(10)
+//	for i, v := range perm {
+//		dest[v] = src[i]
+//	}
+//
+//	fmt.Println(perm)
+//	perm = rand.Perm(10)
+//	fmt.Println(perm)
+//	fmt.Println(dest)
+//
+//	unSort := []int{4, 5, 6, 3, 2, 1}
+//
+//	SelectSort(&unSort)
+//	fmt.Println(unSort)
+//
+//	unSort = []int{3, 5, 4, 1, 2, 6}
+//
+//	BubbleSort(&unSort)
+//	fmt.Println(unSort)
+//
+//	unSort = []int{3, 5, 4, 1, 2, 6}
+//
+//	InsertSort(&unSort)
+//	fmt.Println(unSort)
+//
+//	unSort = rand.Perm(10)
+//	fmt.Println(unSort)
+//	sort := MergeSort(&unSort)
+//	fmt.Println("MergeSort:", sort)
+//
+//	unSort = rand.Perm(10)
+//	sort = URMergeSort(&unSort)
+//	fmt.Println("URMergeSort:", sort)
+//
+//	unSort = rand.Perm(50)
+//	fmt.Println(unSort)
+//	QuickSort(&unSort)
+//	fmt.Println("QuickSort:", unSort)
+//}
 
 func SelectSort(u *[]int) {
 	unSort := *u
